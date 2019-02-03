@@ -2,7 +2,7 @@
 
 This application is a proof of concept for digesting commitment data from DynamoDb in AWS.
 
-###How to generate AWS credentials
+### How to generate AWS credentials
 * Create user in IAM with rights to at least DynamoDb. User must have "programmatic access" to AWS.
 * Note the Access Key Id and Secret Key that are shown when completeing the user setup.
 * Perform one of the following to apply the credentials to your project (additional details: https://github.com/aws/aws-sdk-net/issues/499#issuecomment-266675131).
