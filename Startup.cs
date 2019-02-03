@@ -38,10 +38,10 @@ namespace commitment_database_connector
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            ConfigureAwsCredentials();
+
             services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
             services.AddAWSService<IAmazonDynamoDB>();
-
-            ConfigureAwsCredentials();
         }
 
         private void ConfigureAwsCredentials()
