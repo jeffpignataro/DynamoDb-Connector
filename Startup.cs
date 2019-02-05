@@ -14,6 +14,7 @@ using Amazon;
 using Amazon.DynamoDBv2;
 using Newtonsoft.Json;
 using commitment_database_connector.Models;
+using commitment_database_connector.Helpers;
 
 namespace commitment_database_connector
 {
@@ -38,19 +39,20 @@ namespace commitment_database_connector
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            //ConfigureAwsCredentials();
+            ConfigureAwsCredentials();
 
             services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
             services.AddAWSService<IAmazonDynamoDB>();
+
         }
 
-        // private void ConfigureAwsCredentials()
-        // {
-        //     var credentials = JsonConvert.DeserializeObject<Credential>(File.ReadAllText(@".aws\credentials\credentials.json"));
-        //     Environment.SetEnvironmentVariable("AWS_ACCESS_KEY_ID", credentials.AWS.AccessKey);
-        //     Environment.SetEnvironmentVariable("AWS_SECRET_ACCESS_KEY", credentials.AWS.SecretKey);
-        //     Environment.SetEnvironmentVariable("AWS_REGION", credentials.AWS.Region);
-        // }
+        private void ConfigureAwsCredentials()
+        {
+            var credentials = JsonConvert.DeserializeObject<Credential>(File.ReadAllText(@".aws\credentials\credentials.json"));
+            Environment.SetEnvironmentVariable("AWS_ACCESS_KEY_ID", credentials.AWS.AccessKey);
+            Environment.SetEnvironmentVariable("AWS_SECRET_ACCESS_KEY", credentials.AWS.SecretKey);
+            Environment.SetEnvironmentVariable("AWS_REGION", credentials.AWS.Region);
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

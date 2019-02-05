@@ -1,0 +1,17 @@
+@model List<string>
+@{
+ViewData["Title"] = "List of Tables";
+}
+<h2>List of Tables</h2>
+<div class="row">
+    <ul>
+        @foreach (string item in Model)
+        {
+        <li class="list-group-item col-md-6 col-sm-12">
+            <a asp-area="" asp-controller="Dynamo" asp-action="DescribeTable" asp-route-TableName="@item">
+                @item
+            </a>
+        </li>
+        }
+    </ul>
+</div>

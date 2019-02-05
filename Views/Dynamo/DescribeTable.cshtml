@@ -1,0 +1,24 @@
+@model Amazon.DynamoDBv2.Model.TableDescription
+@{
+ViewData["Title"] = "Table Schema";
+}
+<h1>Table Schema</h1>
+<div class="row">
+    <div class="col-xs-12">
+        <p>
+            Table Item Count: @Model.ItemCount
+        </p>
+    </div>
+    <div class="col-xs-12">
+        <h3>Table Attributes</h3>
+        <ul>
+        @foreach (var item in Model.AttributeDefinitions)
+        {            
+            <li>
+                <strong>Name:</strong> @item.AttributeName
+                <strong>Type:</strong> @item.AttributeType
+            </li>               
+        }
+        </ul>
+    </div>
+</div>
